@@ -54,7 +54,7 @@ if __name__ == '__main__':
     # TODO: Get through CLI args
     epochs = 10
     batch_size = 1
-    use_gpu = False
+    use_gpu = True
     tile_size = (256, 256)
 
     device = utils.device(use_gpu=use_gpu)

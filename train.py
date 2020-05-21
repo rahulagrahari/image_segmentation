@@ -52,7 +52,7 @@ def train(model, train_loader, device,
 if __name__ == '__main__':
 
     # TODO: Get through CLI args
-    epochs = 10
+    epochs = 100
     batch_size = 1
     use_gpu = True
     tile_size = (256, 256)

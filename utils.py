@@ -13,7 +13,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 
-INPUT_IMAGE_PATH = './images/train1.jpg'
+INPUT_IMAGE_PATH = './images/img/sample2.jpg'
 LABEL_IMAGE_PATH = './images/mask1.jpg'
 WEIGHTS_FILE_PATH = './weights/model.pt'
 
@@ -73,12 +73,12 @@ def y_dtype():
     return torch.long
 
 
-def input_image():
-    return Image.open(INPUT_IMAGE_PATH)
+def input_image(pth=INPUT_IMAGE_PATH):
+    return Image.open(pth)
 
 
-def label_image():
-    return Image.open(LABEL_IMAGE_PATH)
+def label_image(pth=LABEL_IMAGE_PATH):
+    return Image.open(pth)
 
 
 def save_weights_to_disk(model):
@@ -114,7 +114,7 @@ def loader_with_progress(loader, epoch_n=None, epoch_total=None, stats=None, lea
 def tiled_image_size(image_size, tile_size, tile_stride_ratio=1.0):
 
     assert type(image_size) == type(tile_size) == tuple
-    assert len(image_size)  == len(tile_size)  == 2
+    assert len(image_size) == len(tile_size) == 2
 
     assert tile_size[0] <= image_size[0]
     assert tile_size[1] <= image_size[1]
@@ -166,7 +166,6 @@ def overlay_class_prediction(image, prediction, color=(255, 0, 0)):
                 yield (x, y)
 
     tiles = tile_generator()
-
     for n in range(N):
         (x, y) = next(tiles)
         tile = prediction[n, :, :]

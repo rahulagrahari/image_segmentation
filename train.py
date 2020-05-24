@@ -3,7 +3,7 @@ import torch.optim
 
 import utils
 import dataset
-from model import FCNN
+from model import FCNN, UNet
 from loss import CrossEntropyLoss2d
 
 
@@ -52,9 +52,9 @@ def train(model, train_loader, device,
 if __name__ == '__main__':
 
     # TODO: Get through CLI args
-    epochs = 100
+    epochs = 10
     batch_size = 1
-    use_gpu = True
+    use_gpu = False
     tile_size = (256, 256)
 
     device = utils.device(use_gpu=use_gpu)

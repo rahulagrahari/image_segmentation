@@ -2,7 +2,7 @@ import torch
 
 import utils
 import dataset
-from model import FCNN
+from model import FCNN, UNet
 from utils import ClassLabel
 
 
@@ -45,13 +45,12 @@ if __name__ == '__main__':
 
     model = FCNN()
     model = utils.load_weights_from_disk(model)
-
-    loader = dataset.full_image_loader(tile_size=tile_size)
+    input_image = utils.input_image()
+    loader = dataset.full_image_loader(tile_size=tile_size, img_path="images/img/sample2.jpg")
 
     prediction = predict(model, loader, device=device,
                          class_label=ClassLabel.house)
 
-    input_image = utils.input_image()
     pred_image = utils.overlay_class_prediction(input_image, prediction)
 
     pred_image_path = './images/output/prediction.png'

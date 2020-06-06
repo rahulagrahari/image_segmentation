@@ -13,7 +13,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 
-INPUT_IMAGE_PATH = './images/img/sample1.jpg'
+INPUT_IMAGE_PATH = './images/img/train2.jpg'
 LABEL_IMAGE_PATH = './images/mask1.jpg'
 WEIGHTS_FILE_PATH = './weights/model.pt'
 

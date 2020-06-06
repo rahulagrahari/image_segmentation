@@ -46,7 +46,7 @@ if __name__ == '__main__':
     model = FCNN()
     model = utils.load_weights_from_disk(model)
     input_image = utils.input_image()
-    loader = dataset.full_image_loader(tile_size=tile_size, img_path="images/img/sample1.jpg")
+    loader = dataset.full_image_loader(tile_size=tile_size, img_path="images/img/train2.jpg")
 
     prediction = predict(model, loader, device=device,
                          class_label=ClassLabel.house)

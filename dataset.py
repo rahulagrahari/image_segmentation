@@ -48,11 +48,12 @@ def tile_dataset(tile_size, tile_stride_ratio=1.0, img_path=None, augumentation=
             y_tiles = np.vstack((y_tiles, y_tile))
 
         if augumentation:
-            x_aug, y_aug = rough.augmented_image(img_pth, mask_pth)
-            x_tile_aug, y_tile_aug = img_tile_generator(tile_size, x_aug.convert('RGB'), y_aug.convert('1'),
-                                                        tile_stride_ratio=tile_stride_ratio)
-            x_tiles = np.vstack((x_tiles, x_tile_aug))
-            y_tiles = np.vstack((y_tiles, y_tile_aug))
+            x_augs, y_augs = rough.augmented_image(img_pth, mask_pth)
+            for x_aug, y_aug in zip(x_augs, y_augs):
+                x_tile_aug, y_tile_aug = img_tile_generator(tile_size, x_aug.convert('RGB'), y_aug.convert('1'),
+                                                            tile_stride_ratio=tile_stride_ratio)
+                x_tiles = np.vstack((x_tiles, x_tile_aug))
+                y_tiles = np.vstack((y_tiles, y_tile_aug))
 
     # Clip tiles accumulators to the actual number of tiles
     # Since some tiles might have been discarded, n <= tile_count

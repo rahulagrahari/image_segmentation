@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
     device = utils.device(use_gpu=use_gpu)
 
-    model = FCNN()
+    model = UNet()
     model = utils.load_weights_from_disk(model)
     input_image = utils.input_image()
     loader = dataset.full_image_loader(tile_size=tile_size, img_path="images/img/train2.jpg")

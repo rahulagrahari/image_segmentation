@@ -59,7 +59,7 @@ if __name__ == '__main__':
 
     device = utils.device(use_gpu=use_gpu)
 
-    model = FCNN()
+    model = UNet()
 
     train_loader = dataset.training_loader(batch_size=batch_size,
                                            tile_size=tile_size)
